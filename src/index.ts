@@ -38,7 +38,7 @@ async function login(
     const execution = response.body.match(/input name="execution" value=.*><input name="_eventId"/)?.[0]?.replace('input name="execution" value="', '')?.replace('"/><input name="_eventId"', '');
 
     if (!execution) {
-        throw new Error(`parse execution field failed`);
+        throw new Error(`parse execution field failed`+response.body.toString());
     }
 
     // embed additional fields
