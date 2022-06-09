@@ -35,7 +35,7 @@ async function login(
 
     // get `execution` field, will be used in post form data
     let response = await client.get(LOGIN);
-    const execution = response.body.match(/input name="execution" value=.*><input name="_eventId"/)?.[0]?.replace('input name="execution" value="', '')?.replace('"/><input name="_eventId"', '');
+    const execution = response.body.match(/name="execution" value=.*><input type="hidden" name="_eventId"/)?.[0]?.replace('input name="execution" value="', '')?.replace('"/><input name="_eventId"', '');
 
     if (!execution) {
         throw new Error(`parse execution field failed`+response.body.toString());
