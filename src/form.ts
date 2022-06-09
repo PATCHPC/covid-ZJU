@@ -62,7 +62,7 @@ export interface DailyReportForm {
     sfqrxxss: string;   // 是否确认消息属实
     sfsqhzjkk: string;  // 是否申领杭州健康码
     jrdqtlqk: [];   // 浙江返回
-    jrdqjcqk: [];   // 返回
+    jrdqjcqk: [];   //
 
     jcjg: string;
     created_uid: number;
