@@ -5,9 +5,12 @@ import TelegramBot from "node-telegram-bot-api";
 import { LoginForm, DailyReportForm, DailyReportResponse } from "./form.js";
 import { sleep, randomBetween } from "./utils.js";
 
-const LOGIN = "https://auth.bupt.edu.cn/authserver/login";
-const GET_REPORT = "https://app.bupt.edu.cn/ncov/wap/default/index";
-const POST_REPORT = "https://app.bupt.edu.cn/ncov/wap/default/save";
+// const LOGIN = "https://auth.bupt.edu.cn/authserver/login";
+// const GET_REPORT = "https://app.bupt.edu.cn/ncov/wap/default/index";
+// const POST_REPORT = "https://app.bupt.edu.cn/ncov/wap/default/save";
+const LOGIN = "https://zjuam.zju.edu.cn/cas/login";
+const GET_REPORT = "https://healthreport.zju.edu.cn/ncov/wap/default/index";
+const POST_REPORT = "https://healthreport.zju.edu.cn/ncov/wap/default/save";
 const RETRY = 100;
 const TIMEOUT = 2000;
 
@@ -127,12 +130,12 @@ async function postDailyReportFormData(
 
 (async (): Promise<void> => {
     const loginForm: LoginForm = {
-        username: process.env["BUPT_USERNAME"],
-        password: process.env["BUPT_PASSWORD"]
+        username: process.env["ZJU_USERNAME"],
+        password: process.env["ZJU_PASSWORD"]
     }
 
     if (!(!!loginForm.username && !!loginForm.password)) {
-        throw new Error("无法登录；请在仓库 Settings 的 Secrets 栏填写 BUPT_USERNAME 与 BUPT_PASSWORD");
+        throw new Error("无法登录；请在仓库 Settings 的 Secrets 栏填写 ZJU_USERNAME 与 ZJU_PASSWORD");
     }
 
     console.log("用户登录中");
