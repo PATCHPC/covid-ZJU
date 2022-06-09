@@ -4,6 +4,7 @@ import { CookieJar } from "tough-cookie";
 import TelegramBot from "node-telegram-bot-api";
 import { LoginForm, DailyReportForm, DailyReportResponse } from "./form.js";
 import { sleep, randomBetween } from "./utils.js";
+import {debuglog} from "util";
 
 // const LOGIN = "https://auth.bupt.edu.cn/authserver/login";
 // const GET_REPORT = "https://app.bupt.edu.cn/ncov/wap/default/index";
@@ -35,10 +36,12 @@ async function login(
 
     // get `execution` field, will be used in post form data
     let response = await client.get(LOGIN);
-    const execution = response.body.match(/<input type="hidden" name="execution" value=.*><input type="hidden" name="_eventId"/)?.[0]?.replace('input name="execution" type="hidden" value="', '')?.replace('" />\n<input type="hidden" name="_eventId"', '');
+    const execution = response.body.match(/<input type="hidden" name="execution" value=.*>/)?.[0]?.replace('input name="execution" type="hidden" value="', '')?.replace('" />', '');
     // /input name="execution" value=.*><input name="_eventId"/)?.[0]?.replace('input name="execution" value="', '')?.replace('"/><input name="_eventId"', '');
     if (!execution) {
         throw new Error(`parse execution field failed`+response.body.toString());
+    }else{
+        console.log("execution"+execution)
     }
 
     // embed additional fields
