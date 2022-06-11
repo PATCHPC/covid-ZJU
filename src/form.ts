@@ -61,8 +61,10 @@ export interface DailyReportForm {
     sqhzjkkys: string;  // 杭州健康码颜色，1:绿色 2:红色 3:黄色
     sfqrxxss: string;   // 是否确认消息属实
     sfsqhzjkk: string;  // 是否申领杭州健康码
-    jrdqtlqk: [];   // 浙江返回
-    jrdqjcqk: [];   //
+    jrdqtlqk: Array<string>;
+    jrdqjcqk: Array<string>;
+    // jrdqtlqk: [];   // 浙江返回
+    // jrdqjcqk: [];   //
 
     jcjg: string;
     created_uid: number;

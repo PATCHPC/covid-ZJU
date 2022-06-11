@@ -119,8 +119,6 @@ async function getDailyReportFormData(
     oldForm.bztcyy = "";
     // 是否省份不合？否
     oldForm.sfsfbh = "0";
-    oldForm.jrdqtlqk = [];
-    oldForm.jrdqjcqk = [];
 
 
     return oldForm;
